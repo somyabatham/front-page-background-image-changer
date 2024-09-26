@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Hero Section</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header class="hero-section">
+        <nav class="navbar" id="navbar">
+            <div class="logo">MyLogo</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+        <div class="hero-content" id="hero-content">
+            <h1 class="animated-text">Welcome to Our Website</h1>
+            <p class="animated-text">Your success starts here. Let's achieve it together.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+    </header>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        });
+
+        // JavaScript to change background image, text color, and nav links color every 5 seconds
+        const heroSection = document.querySelector('.hero-section');
+        const heroContent = document.getElementById('hero-content');
+        const navLinks = document.getElementById('nav-links');
+        const images = [
+            './img3.jpg',
+            './img4.jpg',
+            './img5.jpg',
+            './img6.jpg'
+
+        ];
+        const textColors = [
+            '#000000',
+            '#ffffff',
+            '#000000',
+            '#ffffff'
+        ];
+        const navLinkColors = [
+            '#000000',
+            '#ffffff',
+            '#000000',
+            '#000000'
+        ];
+        let currentIndex = 0;
+
+        function changeBackgroundImage() {
+            heroSection.style.backgroundImage = `url(${images[currentIndex]})`;
+            heroContent.style.color = textColors[currentIndex];
+            navLinks.style.color = navLinkColors[currentIndex];
+            const navLinkItems = navLinks.querySelectorAll('a');
+            navLinkItems.forEach(link => {
+                link.style.color = navLinkColors[currentIndex];
+            });
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        setInterval(changeBackgroundImage, 5000);
+    </script>
+</body>
+
+</html>
